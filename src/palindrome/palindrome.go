@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 //Read from keyboard one string and check if it's palindrome
@@ -14,16 +15,19 @@ func main() {
 }
 
 func checkPalindrome(line string) (isPalindrome bool) {
+	line = strings.ToLower(line)
 	lineLen := len(line)
-	lineMed := int(lineLen / 2)
-	lineLen--
 	isPalindrome = true
-	i := 0
-	for i <= lineMed && isPalindrome {
-		if line[i] == line[lineLen-i] {
-			i++
-		} else {
-			isPalindrome = false
+	if lineLen > 0 {
+		lineMed := int(lineLen / 2)
+		lineLen--
+		i := 0
+		for i <= lineMed && isPalindrome {
+			if line[i] == line[lineLen-i] {
+				i++
+			} else {
+				isPalindrome = false
+			}
 		}
 	}
 	return
